@@ -1,0 +1,49 @@
+.container {
+    display: flex;
+}
+
+body {
+    font-family: sans-serif;
+    font-weight: bolder;
+    font-size: 30px;
+}
+
+ul li {
+    margin: 10px 10px 10px 10px;
+}
+
+button {
+    margin: 10px;
+    padding: 10px;
+    background-color: cornflowerblue;
+    border-style: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 20px;
+}
+
+.content {
+    padding: 30px;
+    border-style: solid;
+    border-color: black;
+    border-width: 10px;
+
+}
+
+.red-border {
+    border-color: red;
+}
+
+#inputs-container {
+    background-color: rgb(227, 227, 227);
+    padding: 20px;
+    border-radius: 20px;
+    border-style: none;
+    box-shadow: 1px 5px 3px #a9a9a9;
+}
+
+input {
+    border-radius: 20px;
+    padding: 10px;
+    border-style: none;
+}

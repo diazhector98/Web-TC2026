@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>lab items list</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="./utils.js"></script>
+  <script>
+    // DOMContentLoaded wait until all dom is loaded, check the docs in below link
+    // https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event
+    document.addEventListener("DOMContentLoaded", (_) => {
+      let total = document.getElementById("total")
+      total.appendChild(document.createTextNode("0"))
+      // use here what you have in utils.js
+
+      let addButton = document.getElementById("add-item")
+      addButton.addEventListener("click", add_button_clicked)
+
+    });
+  </script>
+</head>
+<body>
+  <div id="content-container" class="content">
+    <div id="inputs-container">
+      item: <input type="text" id="item-name">
+      value: <input type="text" id="item-value">
+      <button id="add-item"> add</button>
+    </div>
+  
+    <ol id="items">
+  
+    </ol>
+
+    <div class="container">
+      <p>Total: </p>
+      <p id="total"></p>
+    </div>
+  </div>
+</body>
+</html>
