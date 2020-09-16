@@ -24,7 +24,6 @@ let totalWeight = 0
 const onAddPokemonButtonClicked = () => {
     const pokemonNameInputText = document.getElementById("pokemon-name-input")
     const pokemonName = pokemonNameInputText.value;
-    console.log(`Pokemon ${pokemonName} added!`)
     fetchPokemon(pokemonName)
 }
 
@@ -33,6 +32,7 @@ const fetchPokemon = (pokemonName) => {
 
     axios.get(url)
         .then((response) => {
+            removeErrorBanner()
             console.log({response})
             pokemon = new Pokemon(response.data)
             pokemonCard = createPokemonCard(pokemon)
@@ -41,26 +41,41 @@ const fetchPokemon = (pokemonName) => {
             addWeight(pokemon)
         })
         .catch((error) => {
+
             console.log({error})
+            showErrorBanner()
         })
         .then(() => {
             console.log("Finished")
         })
 }
 
+const showErrorBanner = () => {
+    const errorContainer = document.getElementById("pokemon-not-found-container")
+    errorContainer.innerHTML = "That pokemon doesn't exist!"
+}
+
+const removeErrorBanner = () => {
+    const errorContainer = document.getElementById("pokemon-not-found-container")
+    errorContainer.innerHTML = ""
+}
+
 const createPokemonCard = (pokemon) => {
     const container = document.createElement("div")
+    const pokemonImage = document.createElement("img")
     const pokemonNameText = document.createElement("p")
     const pokemonWeightText = document.createElement("p")
     const deletePokemonButton = document.createElement("button")
 
     container.id = pokemon.name
+    pokemonImage.setAttribute("src", pokemon.imageUrl)
     pokemonNameText.innerHTML = pokemon.name
     pokemonWeightText.innerHTML = pokemon.weight
     deletePokemonButton.innerHTML = DELETE_POKEMON_BUTTON_TEXT
 
     deletePokemonButton.addEventListener("click", deletePokemon)
 
+    container.appendChild(pokemonImage)
     container.appendChild(pokemonNameText)
     container.appendChild(pokemonWeightText)
     container.appendChild(deletePokemonButton)
