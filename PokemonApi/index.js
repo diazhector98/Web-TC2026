@@ -21,7 +21,8 @@ let pokemons = {
 
 let totalWeight = 0
 
-const onAddPokemonButtonClicked = () => {
+const onAddPokemonButtonClicked = (event) => {
+    event.preventDefault()
     const pokemonNameInputText = document.getElementById("pokemon-name-input")
     const pokemonName = pokemonNameInputText.value;
     fetchPokemon(pokemonName)
@@ -52,7 +53,8 @@ const fetchPokemon = (pokemonName) => {
 
 const showErrorBanner = () => {
     const errorContainer = document.getElementById("pokemon-not-found-container")
-    errorContainer.innerHTML = "That pokemon doesn't exist!"
+    const errorBanner = createErrorBanner()
+    errorContainer.appendChild(errorBanner)
 }
 
 const removeErrorBanner = () => {
@@ -68,9 +70,10 @@ const createPokemonCard = (pokemon) => {
     const deletePokemonButton = document.createElement("button")
 
     container.id = pokemon.name
+    container.classList.add("pokemon-card")
     pokemonImage.setAttribute("src", pokemon.imageUrl)
     pokemonNameText.innerHTML = pokemon.name
-    pokemonWeightText.innerHTML = pokemon.weight
+    pokemonWeightText.innerHTML = "Weight: " + pokemon.weight
     deletePokemonButton.innerHTML = DELETE_POKEMON_BUTTON_TEXT
 
     deletePokemonButton.addEventListener("click", deletePokemon)
@@ -113,4 +116,13 @@ const removeWeight = (pokemon) => {
     const weightTextNode = document.getElementById("total-weight-text")
     totalWeight -= pokemon.weight
     weightTextNode.innerHTML = totalWeight.toString()
+}
+
+const createErrorBanner = () => {
+    const container = document.createElement("div")
+    container.id = "error-container"
+    const message = document.createElement("p")
+    message.innerHTML = "That pokemon does not exist!"
+    container.appendChild(message)
+    return container
 }
