@@ -1,0 +1,61 @@
+
+p {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 5px;
+}
+
+li {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+
+button {
+    padding: 10px;
+    background-color: rgb(255, 202, 103);
+    border-style: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(252, 182, 54);
+
+}
+
+#pokemon-name-input {
+    padding: 10px;
+    border-radius: 10px;
+    width: 200px;
+    height: 20px;
+    font-size: large;
+}
+
+#pokemon-cards {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#error-container {
+    background-color: rgb(255, 125, 125);
+    padding: 20px;
+    border-radius: 20px;
+    width: fit-content;
+}
+
+
+.pokemon-card {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 10px 10px 8px #dadada;
+    width: 300px;
+    height: fit-content;
+    margin: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.hint {
+    font-size: small;
+    color: grey;
+}
